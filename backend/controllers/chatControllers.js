@@ -1,10 +1,10 @@
 
 const asyncHandler = require("express-async-handler");
-const Chat = require("../models/chatModel");
+const Chat = require("../models/chatModels");
 const User = require("../models/userModel");
 
 const accessChat = asyncHandler(async (req, res) => {
-  const { userId } = req.body;
+  const { userId }  = req.body;
 
   if (!userId) {
     console.log("UserId param not sent with request");
@@ -48,7 +48,7 @@ const accessChat = asyncHandler(async (req, res) => {
     }
   }
 });
-/*
+
 const fetchChats = asyncHandler(async (req, res) => {
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
@@ -173,13 +173,13 @@ const addToGroup = asyncHandler(async (req, res) => {
   } else {
     res.json(added);
   }
-});*/
+});
 
 module.exports = {
   accessChat,
- /* fetchChats,
+  fetchChats,
   createGroupChat,
   renameGroup,
   removeFromGroup,
-  addToGroup,*/
+  addToGroup,
 };
