@@ -3,9 +3,19 @@ import{Box, Container,Text,TabList,Tab,Tabs,TabPanel,TabPanels} from "@chakra-ui
 import { px } from 'framer-motion'
 import Login from '../components/Authentication/Login'
 import Signup from '../components/Authentication/Signup'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import  { useEffect } from "react";
+
 
 
 const Homepage = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userinfo"));
+    if (user) history.push("/chats");
+  }, [history]);
+
+
   return (
     <Container maxW="xl" centerContent>
     <Box

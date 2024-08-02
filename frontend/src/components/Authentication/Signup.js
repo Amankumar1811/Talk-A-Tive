@@ -16,19 +16,18 @@ import { useHistory } from "react-router-dom";
 
 
 function Signup() {
-    const [show, setShow] = useState(false);
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [confirmpassword, setConfirmpassword] = useState();
-    const [password, setPassword] = useState();
-    const [pic, setPic] = useState();
-    const [picLoading, setPicLoading] = useState(false);
-    
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+  const toast = useToast();
+  const history = useHistory();
 
-    const toast = useToast();
-    const history = useHistory();
-  
-    const handleClick = () => setShow(!show);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [confirmpassword, setConfirmpassword] = useState();
+  const [password, setPassword] = useState();
+  const [pic, setPic] = useState();
+  const [picLoading, setPicLoading] = useState(false);
+
     const postDetails = (pics) => {
       setPicLoading(true);
       if (pics === undefined) {
@@ -45,7 +44,7 @@ function Signup() {
       if (pics.type === "image/jpeg" || pics.type === "image/png") {
         const data = new FormData();
         data.append("file", pics);
-        data.append("upload_preset", "chat-App");
+        data.append("upload_preset", "chat-App"); 
         data.append("cloud_name", "ddvt7qqkv");
         fetch("https://api.cloudinary.com/v1_1/ddvt7qqkv/image/upload", {
           method: "post",
